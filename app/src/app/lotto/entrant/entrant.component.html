@@ -1,0 +1,14 @@
+<mat-card class="entrant-card"
+ [ngClass]="{'curser-selected': entrant.isCurserSelected,
+  'winner': entrant.itemsWon && entrant.itemsWon.length}">
+  <mat-card-header>
+    <img mat-card-avatar [src]="entrant.avatarUri" />
+    <mat-card-title>{{entrant.name}}</mat-card-title>
+    <mat-card-subtitle>{{entrant.numberOfTickets}} tickets</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image 
+    *ngIf="entrant.itemWon" 
+    [src]="entrant.itemWon.imageUri" 
+    [alt]="entrant.itemWon.name">
+</mat-card>

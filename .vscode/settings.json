@@ -1,0 +1,17 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.exclude": {
+        "**/node_modules/": true,
+        "**/dist/": true,
+        "**/*.css": {"when": "$(basename).scss"}
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/dist/": true,
+        "**/*.css": {"when": "$(basename).scss"}
+    },
+    "typescript.referencesCodeLens.enabled": true,
+    "todohighlight.include": "{**/*.ts,**/*.html,**/*.scss}",
+    "todohighlight.keywords": ["todo:"],
+    "prettier.singleQuote": true,
+}

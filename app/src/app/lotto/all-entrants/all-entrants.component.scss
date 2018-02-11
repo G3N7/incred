@@ -1,0 +1,9 @@
+.lotto-winners {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.lotto-not-winners {
+    display: flex;
+    flex-flow: row wrap;
+}
