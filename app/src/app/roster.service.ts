@@ -35,7 +35,6 @@ export class RosterService {
       'ClubberLane',
       'Ysabela',
       'Aldrick',
-      'Rakiten',
       'Kerstt',
       'datboiii',
       'LokirioS',
@@ -46,6 +45,7 @@ export class RosterService {
       'Blueinia',
       '4go101',
       'Vernal',
+      'cyberorganizer',
       'Misaa',
       'zRevelation'
     ];
