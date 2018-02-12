@@ -45,7 +45,7 @@ export class TicketOverrideService {
         case 'aldrick':
           entrant.numberOfTickets += 7;
           break;
-        case 'dantheSQLMan':
+        case 'danthesqlman':
           entrant.numberOfTickets += 5;
           break;
         case 'cornholeo':
