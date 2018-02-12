@@ -9,32 +9,32 @@ export class TicketOverrideService {
     entrants.forEach(entrant => {
       const normalizedName = entrant.name.toLowerCase();
       switch (normalizedName) {
-        case 'f4ng':
+        case 'zRevelation':
           entrant.numberOfTickets = 2;
           break;
-        case 'mrpoopypants':
+        case 'Misaa':
           entrant.numberOfTickets = 2;
-          break;
-        case 'lifeburn':
-          entrant.numberOfTickets += 10;
           break;
         case 'ysabela':
           entrant.numberOfTickets += 10;
-          break;
-        case 'erbz':
-          entrant.numberOfTickets += 5;
           break;
         case 'healf':
           entrant.numberOfTickets += 2;
           break;
         case 'eternalrose':
-          entrant.numberOfTickets += 5;
+          entrant.numberOfTickets += 8;
           break;
         case 'aldrick':
+          entrant.numberOfTickets += 7;
+          break;
+        case 'DantheSQLMan':
           entrant.numberOfTickets += 5;
           break;
-        case 'cornholieo':
-          entrant.numberOfTickets += 3;
+        case 'cornholeo':
+          entrant.numberOfTickets += 7;
+          break;
+        case 'F4nG':
+          entrant.numberOfTickets += 4;
           break;
         default:
           break;

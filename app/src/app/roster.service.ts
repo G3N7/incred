@@ -42,12 +42,12 @@ export class RosterService {
       'F4nG',
       'Lifeburn',
       'GreenRanger',
-      'Powzer',
       'JaysinHighwind',
       'Blueinia',
       '4go101',
       'Vernal',
-      'Luc1fer'
+      'Misaa',
+      'zRevelation'
     ];
   }
 }
