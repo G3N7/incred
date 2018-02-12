@@ -100,14 +100,14 @@ export class AllEntrantsComponent implements OnInit {
 
   raffleHgEquipBox(): void {
     this._raffle(() => {
-      const attributeStoneWinner = this._pickWinnerService.pickWinner(
+      const hgEquipBoxWinner = this._pickWinnerService.pickWinner(
         this.allEntrants
       );
-      attributeStoneWinner.itemWon = {
+      hgEquipBoxWinner.itemWon = {
         imageUri: './assets/hg-equip-box.png',
-        name: '10 x HG Equip Box'
+        name: '12 x HG Equip Box'
       };
-      this.sAttributeStoneWinner.push(attributeStoneWinner);
+      this.hgEquipBoxWinner.push(hgEquipBoxWinner);
     });
   }
 }
