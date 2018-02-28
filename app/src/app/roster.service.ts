@@ -39,7 +39,6 @@ export class RosterService {
       'datboiii',
       'LokirioS',
       'F4nG',
-      'Lifeburn',
       'GreenRanger',
       'JaysinHighwind',
       'Blueinia',
