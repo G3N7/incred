@@ -1,0 +1,43 @@
+{
+  "name": "incred-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/bot.entrypoint.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "start": "npm-run-all clean build --parallel watch:build watch:run --print-label",
+    "build": "tsc",
+    "watch:build": "tsc --watch",
+    "watch:run": "nodemon ./dist/bot.entrypoint.js --delay 2500ms --watch ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/G3N7/incred.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "l2r",
+    "lineage\\"
+  ],
+  "author": "Mitch Ferrer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/G3N7/incred/issues"
+  },
+  "homepage": "https://github.com/G3N7/incred#readme",
+  "dependencies": {
+    "commander": "^2.14.1",
+    "discord.js": "^11.3.0",
+    "dotenv": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/dotenv": "^4.0.2",
+    "@types/node": "^9.4.6",
+    "nodemon": "^1.17.1",
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.7.2"
+  }
+}
