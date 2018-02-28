@@ -1,8 +1,8 @@
-import { BaseMessageHandler } from './base.message-handler';
 import { Message } from 'discord.js';
 import { UserLookupService } from './user-lookup.service';
+import { BaseIncredMessageHandler } from './base-incred.message-handler';
 
-export class HotTimeMessageHandler extends BaseMessageHandler {
+export class HotTimeMessageHandler extends BaseIncredMessageHandler {
   constructor(private userLookup: UserLookupService) {
     super();
   }
