@@ -12,7 +12,7 @@ export class HotTimeMessageHandler extends BaseIncredMessageHandler {
   handle(msg: Message): void {
     const erb = this.userLookup.findByUsername('ErB', '9343');
     const kerstt = this.userLookup.findByUsername('Kerstt', '1515');
-    msg.channel.sendMessage(
+    msg.channel.send(
       `Hey, <@!${erb.id}> or <@!${kerstt.id}> can you please do HOT time for ${msg.member}`
     );
   }

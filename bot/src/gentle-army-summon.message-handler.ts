@@ -14,6 +14,6 @@ export class GentleArmySummonMessageHandler extends BaseIncredMessageHandler {
     handle(msg: Message): void {
         const gent = this.userLookup.findByUsername('Gent', '4068');
         const daev = this.userLookup.findByUsername('Daevien', '2530');
-        msg.channel.sendMessage(`Do not fear ${msg.member} the Gentle Army is on the way, watch out <@!${daev.id}>!\n<@!${gent.id}>`);
+        msg.channel.send(`Do not fear ${msg.member} the Gentle Army is on the way, watch out <@!${daev.id}>!\n<@!${gent.id}>`);
     }
 }

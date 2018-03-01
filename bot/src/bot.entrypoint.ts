@@ -4,6 +4,7 @@ import { GentleArmySummonMessageHandler } from './gentle-army-summon.message-han
 import { HotTimeMessageHandler } from './hot-time.message-handler';
 import * as dotenv from 'dotenv';
 import { TestMessageHandler } from './test.message-handler';
+import _ = require('lodash');
 
 dotenv.config();
 
@@ -16,10 +17,11 @@ const handlers = [
 ];
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity("Demi like a fiddle");  
 });
 
 client.on('message', msg => {
+  
   handlers.forEach(h => {
     if (h.selector(msg)) {
       let relevantRoles = msg.member.roles
@@ -33,6 +35,13 @@ client.on('message', msg => {
       }
     }
   });
+});
+
+client.on('guildMemberUpdate', (oldMember, newMember) => {
+  let rulesChannel = client.channels
+  .filter(x => (<any>x).name == 'discord-rules-info')
+  .map(x => x)[0];
+  
 });
 
 let token = (process.env.DISCORD_TOKEN || '').trim();
