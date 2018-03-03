@@ -4,6 +4,5 @@ node_js:
   - "6"
 
 before_script:
-  - cd bot
-  - npm install
-  - npm build
+  - bash setup-bot.sh
+  - bash build-bot.sh
