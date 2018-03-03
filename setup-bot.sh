@@ -4,7 +4,7 @@ echo "Navigate to /bot"
 cd bot
 
 echo "Install Dependencies for bot"
-npm run install
+npm install
 
 echo "Navigate to root"
 cd ..
