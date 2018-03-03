@@ -8,4 +8,4 @@ before_script:
   - bash build-bot.sh
 
 script:
-  - echo TODO: test
+  - echo "TODO: test"
