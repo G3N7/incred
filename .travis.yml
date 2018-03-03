@@ -1,5 +1,6 @@
 language: nodejs
 
 before_script:
-  - bash setup-bot.sh
-  - bash build-bot.sh
+  - cd bot
+  - npm install
+  - npm build
