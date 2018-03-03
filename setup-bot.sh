@@ -1,3 +1,5 @@
+set -e
+
 echo "Navigate to /bot"
 cd bot
 
