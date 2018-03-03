@@ -1,0 +1,8 @@
+language: nodejs
+
+before_script:
+  - bash setup-bot.sh
+  - bash build-bot.sh
+
+after_success:
+  - bash pack-bot.sh
