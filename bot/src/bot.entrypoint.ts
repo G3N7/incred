@@ -1,7 +1,7 @@
 import { Client } from 'discord.js';
 import { UserLookupService } from './user-lookup.service';
-import { GentleArmySummonMessageHandler } from './gentle-army-summon.message-handler';
-import { HotTimeMessageHandler } from './hot-time.message-handler';
+import { GentleArmySummonMessageHandler } from './call-response/gentle-army-summon.message-handler';
+import { HotTimeMessageHandler } from './call-response/hot-time.message-handler';
 import * as dotenv from 'dotenv';
 import { TestMessageHandler } from './test.message-handler';
 import _ = require('lodash');
