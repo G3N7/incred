@@ -4,7 +4,7 @@ echo "Navigate to /bot"
 cd bot
 
 echo "Build Bot"
-npm build
+npm run build
 
 echo "Navigate to root"
 cd ..
