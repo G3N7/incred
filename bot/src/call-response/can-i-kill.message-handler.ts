@@ -20,10 +20,10 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       'defiance',
       'myself',
       'everybody',
-      'Tech',
-      'Goldenrose',
-      'Winterfell',
-      'Tek',
+      'tech',
+      'goldenrose',
+      'winterfell',
+      'tek',
       'nath',
       'tekniques'
     ];
@@ -42,7 +42,7 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       msg.reply('Absolutely not!');
       return;
     }
-    if (clanName.includes('Demi')) {
+    if (clanName.includes('demi')) {
       msg.reply('Outside Channel 1 of course you can!!');
       return;
     }
