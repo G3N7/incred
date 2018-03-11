@@ -5,6 +5,7 @@ import { HotTimeMessageHandler } from './call-response/hot-time.message-handler'
 import * as dotenv from 'dotenv';
 import { TestMessageHandler } from './test.message-handler';
 import _ = require('lodash');
+import { CanIKillHandler } from './call-response/can-i-kill.message-handler';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const userLookup = new UserLookupService(client);
 const handlers = [
   new GentleArmySummonMessageHandler(userLookup),
   new HotTimeMessageHandler(userLookup),
+  new CanIKillHandler(userLookup),
   new TestMessageHandler()
 ];
 
