@@ -18,6 +18,13 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       'stripclub',
       'tp',
       'defiance',
+      'myself',
+      'everybody',
+      'Tech',
+      'Goldenrose',
+      'Winterfell',
+      'Tek',
+      'nath',
       'tekniques'
     ];
 
@@ -31,6 +38,22 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       msg.reply('Absolutely not!');
       return;
     }
+    if (clanName.includes('nath')) {
+      msg.reply('Absolutely not!');
+      return;
+    }
+    if (clanName.includes('Demi')) {
+      msg.reply('Outside Channel 1 of course you can!!');
+      return;
+    }
+    if (clanName.includes('bb')) {
+      msg.reply('Outside Channel 1 of course you can!!');
+      return;
+    }
+    if (clanName.includes('brigade')) {
+      msg.reply('Outside Channel 1 of course you can!!');
+      return;
+    }
     let staticRage = this.userLookup.findByUsername('Kyoubou', '0234');
     if (msg.member.id == staticRage.id) {
       let foxy = this.userLookup.findByUsername('Foxy', '0400');
@@ -42,7 +65,7 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       msg.channel.send(`Hey, ${msg.member} You cannot kill ${clanName}`);
     } else {
       msg.channel.send(
-        `Hey, ${msg.member} Party on! Kill Kill Kill ${clanName}`
+        `Hey, ${msg.member} Party on! Kill Kill Kill ${clanName} Remember Chan 2 only`
       );
     }
   }
