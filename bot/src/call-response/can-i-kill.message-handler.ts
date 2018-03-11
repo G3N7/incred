@@ -23,14 +23,27 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
 
     let normalized = msg.content.toLocaleLowerCase().trim();
     var clanName = normalized
-    .replace('can i kill', '')
-    .replace(/\s/g, '')
-    .trim();
+      .replace('can i kill', '')
+      .replace(/\s/g, '')
+      .trim();
+
+    if (clanName.includes('gent')) {
+      msg.reply('Absolutely not!');
+      return;
+    }
+    let staticRage = this.userLookup.findByUsername('Kyoubou', '0234');
+    if (msg.member.id == staticRage.id) {
+      let foxy = this.userLookup.findByUsername('Foxy', '0400');
+      msg.reply(`you need to ask an adult like <@!${foxy.id}>`);
+      return;
+    }
 
     if (ally.filter(x => x == clanName).length > 0) {
       msg.channel.send(`Hey, ${msg.member} You cannot kill ${clanName}`);
     } else {
-      msg.channel.send(`Hey, ${msg.member} Party on! Kill Kill Kill ${clanName}`);
+      msg.channel.send(
+        `Hey, ${msg.member} Party on! Kill Kill Kill ${clanName}`
+      );
     }
   }
 }
