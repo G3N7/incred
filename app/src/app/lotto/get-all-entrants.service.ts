@@ -8,7 +8,7 @@ import { TicketOverrideService } from './ticket-override.service';
 
 @Injectable()
 export class GetAllEntrantsService {
-  private defaultTicketCount = 7;
+  private defaultTicketCount = 1;
 
   constructor(
     private _rosterService: RosterService,

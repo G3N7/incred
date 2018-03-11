@@ -60,8 +60,7 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
     }
     let staticRage = this.userLookup.findByUsername('Kyoubou', '0234');
     if (msg.member.id == staticRage.id) {
-      let foxy = this.userLookup.findByUsername('Foxy', '0400');
-      msg.reply(`you need to ask an adult like <@!${foxy.id}>`);
+      msg.reply(`whats the point in asking...`);
       return;
     }
 
