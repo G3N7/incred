@@ -20,12 +20,9 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       'defiance',
       'myself',
       'everybody',
-      'tech',
       'goldenrose',
       'winterfell',
-      'tek',
-      'nath',
-      'tekniques'
+      'everyone'
     ];
 
     let normalized = msg.content.toLocaleLowerCase().trim();
@@ -56,6 +53,10 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
     }
     if (clanName.includes('incred')) {
       msg.reply('I will give static your address');
+      return;
+    }
+    if (clanName.includes('tech')) {
+      msg.reply(`Hey, ${msg.member} You cannot kill ${clanName}`);
       return;
     }
     let staticRage = this.userLookup.findByUsername('Kyoubou', '0234');
