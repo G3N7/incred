@@ -7,26 +7,25 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
     super();
   }
   selector(msg: Message): boolean {
-    return msg.content.startsWith("Can I Kill");
+    return msg.content.startsWith('Can I Kill');
   }
   handle(msg: Message): void {
-    var Ally = ["Kingdom", "Churn", "TeaParty", "Tea Party", "Defiance", "Tekniques"];
+    var Ally = [
+      'Kingdom',
+      'Churn',
+      'TeaParty',
+      'Tea Party',
+      'Defiance',
+      'Tekniques'
+    ];
 
     var ClanName;
-    ClanName = msg.content.replace("Can I Kill ",'');
+    ClanName = msg.content.replace('Can I Kill ', '');
 
-    if (Ally.filter(x=> x == ClanName).length > 0) {
-      msg.channel.send(
-        `Hey, ${msg.member} You cannot kill ${ClanName}`
-    );
-}
-    else{
-        msg.channel.send(
-        `Hey, ${msg.member} Party on! Kill Kill Kill`
-    );
+    if (Ally.filter(x => x == ClanName).length > 0) {
+      msg.channel.send(`Hey, ${msg.member} You cannot kill ${ClanName}`);
+    } else {
+      msg.channel.send(`Hey, ${msg.member} Party on! Kill Kill Kill`);
+    }
   }
-
-
-  }
-  
 }
