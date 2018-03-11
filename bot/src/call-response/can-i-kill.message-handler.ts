@@ -54,6 +54,10 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       msg.reply('Outside Channel 1 of course you can!!');
       return;
     }
+    if (clanName.includes('incred')) {
+      msg.reply('I will give static your address');
+      return;
+    }
     let staticRage = this.userLookup.findByUsername('Kyoubou', '0234');
     if (msg.member.id == staticRage.id) {
       let foxy = this.userLookup.findByUsername('Foxy', '0400');
