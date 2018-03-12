@@ -39,10 +39,6 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       msg.reply('Absolutely not!');
       return;
     }
-    if (clanName.includes('nath')) {
-      msg.reply('Absolutely not!');
-      return;
-    }
     if (clanName.includes('incred')) {
       msg.reply('I will give static your address');
       return;
