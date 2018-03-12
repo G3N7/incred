@@ -31,24 +31,16 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       .replace(/\s/g, '')
       .trim();
 
+    if (clanName.includes('demi')) {
+      msg.reply('Absolutely, fucking kill them all!');
+      return;
+    }
     if (clanName.includes('gent')) {
       msg.reply('Absolutely not!');
       return;
     }
     if (clanName.includes('nath')) {
       msg.reply('Absolutely not!');
-      return;
-    }
-    if (clanName.includes('demi')) {
-      msg.reply('Outside Channel 1 of course you can!!');
-      return;
-    }
-    if (clanName.includes('bb')) {
-      msg.reply('Outside Channel 1 of course you can!!');
-      return;
-    }
-    if (clanName.includes('brigade')) {
-      msg.reply('Outside Channel 1 of course you can!!');
       return;
     }
     if (clanName.includes('incred')) {
@@ -69,7 +61,9 @@ export class CanIKillHandler extends BaseIncredMessageHandler {
       msg.channel.send(`Hey, ${msg.member} You cannot kill ${clanName}`);
     } else {
       msg.channel.send(
-        `Hey, ${msg.member} Party on! Kill Kill Kill ${clanName} Remember Chan 2 only`
+        `Hey, ${
+          msg.member
+        } Party on! Kill Kill Kill ${clanName} Remember Chan 2 only`
       );
     }
   }
