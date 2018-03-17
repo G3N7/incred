@@ -3,8 +3,6 @@ language: node_js
 node_js:
   - "6"
 
-env:
-  - BUILD_DIR=app
-  - BUILD_DIR=bot
-
-script: cd $BUILD_DIR && npm install && npm build
+script: 
+- cd app && npm install && npm build
+- cd bot && npm install && npm build
