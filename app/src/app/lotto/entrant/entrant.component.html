@@ -1,6 +1,6 @@
 <mat-card class="entrant-card"
  [ngClass]="{'curser-selected': entrant.isCurserSelected,
-  'winner': entrant.itemsWon && entrant.itemsWon.length}">
+  'winner': entrant.itemWon && entrant.itemWon.length}">
   <mat-card-header>
     <img mat-card-avatar [src]="entrant.avatarUri" />
     <mat-card-title>{{entrant.name}}</mat-card-title>
