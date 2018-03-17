@@ -1,8 +1,8 @@
 import { Message } from "discord.js";
 import { UserLookupService } from "./user-lookup.service";
-import { BaseIncredMessageHandler } from "./base-incred.message-handler";
+import { BaseAllianceMessageHandler } from "./base-alliance.message-handler";
 
-export class TestMessageHandler extends BaseIncredMessageHandler {
+export class TestMessageHandler extends BaseAllianceMessageHandler {
 
     selector(msg: Message): boolean {
         return msg.content === 'test'
@@ -10,4 +10,6 @@ export class TestMessageHandler extends BaseIncredMessageHandler {
     handle(msg: Message): void {
         msg.reply('Test recieved, stop being obtuse!');
     }
+    
+    allowedChannels = ['officers'];
 }
