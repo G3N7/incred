@@ -39,6 +39,13 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
   let rulesChannel = client.channels
     .filter(x => (<any>x).name == 'discord-rules-info')
     .map(x => x)[0];
+
+  let wasSquire = oldMember.roles.filter(x => x.name == 'Incredibles-Squire').map(x => x).length > 0;
+  let isSquire = newMember.roles.filter(x => x.name == 'Incredibles-Squire').map(x => x).length > 0;
+
+  if (!wasSquire && isSquire){
+    newMember.sendMessage(`Welcome to the Clan, please take a look at <#${rulesChannel.id}>`)
+  }  
 });
 
 let token = (process.env.DISCORD_TOKEN || '').trim();
