@@ -31,6 +31,12 @@ export class CanIKillHandler extends BaseAllianceMessageHandler {
       .replace(/\s/g, '')
       .trim();
 
+    let foxy = this.userLookup.findByUsername('Foxy', '0400');
+    if (msg.member.id == foxy.id) {
+      msg.reply(`the goddess doesn't need permission...`);
+      return;
+    }
+
     if (clanName.includes('demi')) {
       msg.reply('Absolutely, fucking kill them all!');
       return;
