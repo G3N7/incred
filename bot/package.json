@@ -31,11 +31,15 @@
     "commander": "^2.14.1",
     "discord.js": "^11.3.0",
     "dotenv": "^5.0.1",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.5",
+    "mongodb": "^3.0.4",
+    "mongoose": "^5.0.10"
   },
   "devDependencies": {
     "@types/dotenv": "^4.0.2",
     "@types/lodash": "^4.14.105",
+    "@types/mongodb": "^3.0.8",
+    "@types/mongoose": "^5.0.7",
     "@types/node": "^9.4.6",
     "nodemon": "^1.17.1",
     "npm-run-all": "^4.1.2",

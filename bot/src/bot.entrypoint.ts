@@ -6,20 +6,22 @@ import * as dotenv from 'dotenv';
 import { TestMessageHandler } from './test.message-handler';
 import _ = require('lodash');
 import { CanIKillHandler } from './call-response/can-i-kill.message-handler';
-import { IncredRosterListMessageHandler } from './roster/incred-roster-list.message-handler';
+import { RosterListMessageHandler } from './roster/roster-list.message-handler';
 import { MessageHandlerService } from './message-handler.service';
-import { KingdomRosterListMessageHandler } from './roster/kingdom-roster-list.message-handler.1';
+import { ClanNames } from './clan-names.enum';
+import { RosterListService } from './roster-list.service';
 
 dotenv.config();
 
 const client = new Client();
 const userLookup = new UserLookupService(client);
+const rosterListService = new RosterListService();
 const handlers = [
   new GentleArmySummonMessageHandler(userLookup),
   new HotTimeMessageHandler(userLookup),
   new CanIKillHandler(userLookup),
-  new IncredRosterListMessageHandler(userLookup),
-  new KingdomRosterListMessageHandler(userLookup),
+  new RosterListMessageHandler(rosterListService, ClanNames.Incredibles),
+  new RosterListMessageHandler(rosterListService, ClanNames.Kingdom),
   new TestMessageHandler()
 ];
 const messageHandlerService = new MessageHandlerService(handlers, client);
