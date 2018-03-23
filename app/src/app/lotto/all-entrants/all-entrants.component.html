@@ -1,8 +1,8 @@
 <div class="lotto-toolbox">
-  <!-- <button [disabled]="blessedWinner.length > 2" mat-raised-button color="primary" (click)="raffleBlessed()" >Raffle Blessed Box</button> -->
+  <button [disabled]="blessedWinner.length > 1" mat-raised-button color="primary" (click)="raffleBlessed()" >Raffle Blessed Box</button>
   <button [disabled]="rAttributeStoneWinner != null" mat-raised-button color="primary" (click)="raffleAttributeR()">Raffle R - Attribute Stone</button>
-  <button [disabled]="sAttributeStoneWinner.length > 3" mat-raised-button color="primary" (click)="raffleAttributeS()">Raffle S - Attribute Stone</button>
-  <!-- <button [disabled]="hgEquipBoxWinner.length > 12" mat-raised-button color="primary" (click)="raffleHgEquipBox()">Raffle 10 x HG Equip Box</button> -->
+  <button [disabled]="sAttributeStoneWinner.length > 2" mat-raised-button color="primary" (click)="raffleAttributeS()">Raffle S - Attribute Stone</button>
+  <button [disabled]="hgEquipBoxWinner.length > 0" mat-raised-button color="primary" (click)="raffleHgEquipBox()">Raffle 10 x HG Equip Box</button>
 </div>
 
 <div class="lotto-entrants-container">
