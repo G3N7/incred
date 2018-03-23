@@ -36,8 +36,13 @@ export class CanIKillHandler extends BaseAllianceMessageHandler {
       msg.reply(`the goddess doesn't need permission...`);
       return;
     }
-
-    if (clanName.includes('demi')) {
+    if (
+      clanName.includes('demi') ||
+      clanName.includes('bb') ||
+      clanName.includes('b.b') ||
+      clanName.includes('bloodbrigade') ||
+      clanName.includes('blood brigade')
+    ) {
       msg.reply('Absolutely, fucking kill them all!');
       return;
     }
@@ -63,9 +68,7 @@ export class CanIKillHandler extends BaseAllianceMessageHandler {
       msg.channel.send(`Hey, ${msg.member} You cannot kill ${clanName}`);
     } else {
       msg.channel.send(
-        `Hey, ${
-          msg.member
-        } Party on! Kill Kill Kill ${clanName} Remember Chan 2 only`
+        `Hey, ${msg.member} Party on! Kill Kill Kill ${clanName}`
       );
     }
   }
