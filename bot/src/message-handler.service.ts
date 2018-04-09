@@ -27,7 +27,7 @@ export class MessageHandlerService {
             if (isAllowedInAllowedChannel == false) return;
         
             // lets see if the person has the correct roles to invoke this command.
-            let rolesMemberHas = msg.member.roles.map(r => r.name);
+            let rolesMemberHas = msg.member && msg.member.roles ? msg.member.roles.map(r => r.name) : [];
             let rolesRequired = h.requiredRoles || [];
             let userHasRequiredRoles = rolesRequired.length == 0 ||
             _.intersection(rolesMemberHas, rolesRequired).length > 0;  
