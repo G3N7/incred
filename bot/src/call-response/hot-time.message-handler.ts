@@ -14,7 +14,7 @@ export class HotTimeMessageHandler extends BaseAllianceMessageHandler {
     const kerstt = this.userLookup.findByUsername('Kerstt', '1515');    
     const fourGo = this.userLookup.findByUsername('4go101', '8005');
     msg.channel.send(
-      `Hey, <@!${erb.id}>, <@!${kerstt.id}>, and <@!${fourGo.id}> can you please do HOT time for ${msg.member}`
+      `Hey, <@!${erb.id}>, <@!${kerstt.id}>, or <@!${fourGo.id}> (in a pinch) can you please do HOT time for ${msg.member}`
     );
   }
 }
