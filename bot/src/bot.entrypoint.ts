@@ -41,9 +41,9 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
     .map(x => x)[0];
 
   let wasSquire = false;
-  if (oldMember && oldMember.roles) wasSquire = oldMember.roles.filter(x => x.name == 'Incredibles-Squire').map(x => x).length > 0;
+  if (oldMember && oldMember.roles) wasSquire = oldMember.roles.filter(x => x.name == 'Squire').map(x => x).length > 0;
   let isSquire = false;
-  if (newMember && newMember.roles) isSquire = newMember.roles.filter(x => x.name == 'Incredibles-Squire').map(x => x).length > 0;
+  if (newMember && newMember.roles) isSquire = newMember.roles.filter(x => x.name == 'Squire').map(x => x).length > 0;
 
   if (!wasSquire && isSquire){
     newMember.sendMessage(`Welcome to the Clan, please take a look at <#${rulesChannel.id}>`)
