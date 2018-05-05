@@ -10,6 +10,8 @@ import { RosterListMessageHandler } from './roster/roster-list.message-handler';
 import { MessageHandlerService } from './message-handler.service';
 import { ClanNames } from './clan-names.enum';
 import { RosterListService } from './roster-list.service';
+import { MasterMessageHandler } from './call-response/master.message-handler';
+import { SkynetMessageHandler } from './call-response/skynet.message-handler';
 
 dotenv.config();
 
@@ -19,16 +21,17 @@ const rosterListService = new RosterListService();
 const handlers = [
   new GentleArmySummonMessageHandler(userLookup),
   new HotTimeMessageHandler(userLookup),
+  new MasterMessageHandler(userLookup),
+  new SkynetMessageHandler(userLookup),
   new CanIKillHandler(userLookup),
-  new RosterListMessageHandler(rosterListService, ClanNames.Incredibles),
-  new RosterListMessageHandler(rosterListService, ClanNames.Kingdom),
+  new RosterListMessageHandler(rosterListService),
   new TestMessageHandler()
 ];
 const messageHandlerService = new MessageHandlerService(handlers, client);
 
 client.on('ready', () => {
   console.log('bot up');
-  client.user.setActivity('Demi like a fiddle');
+  client.user.setActivity('Fazu like an accordion');
 });
 
 client.on('message', msg => {
@@ -46,7 +49,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
   if (newMember && newMember.roles) isSquire = newMember.roles.filter(x => x.name == 'Squire').map(x => x).length > 0;
 
   if (!wasSquire && isSquire){
-    newMember.sendMessage(`Welcome to the Clan, please take a look at <#${rulesChannel.id}>`)
+    newMember.send(`Welcome to the Clan, please take a look at <#${rulesChannel.id}>`)
   }  
 });
 

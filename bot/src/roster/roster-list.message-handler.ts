@@ -7,14 +7,14 @@ import { RosterListService, ClanRoles } from "../roster-list.service";
 
 export class RosterListMessageHandler extends BaseOfficerMessageHandler {
 
-    constructor(private rosterListService: RosterListService, private clan: ClanNames){
+    constructor(private rosterListService: RosterListService){
         super();
     }
 
     requiredRoles = [
-        `${this.clan}-Leader`,
-        `${this.clan}-Captain`,
-        `${this.clan}-Knight`
+        `Leader`,
+        `Captain`,
+        `Knight`
     ];
 
     selector(msg: Message): boolean {
@@ -22,14 +22,14 @@ export class RosterListMessageHandler extends BaseOfficerMessageHandler {
     }
     handle(msg: Message): void {
 
-        let roster = this.rosterListService.getClanRoster(msg, this.clan);
+        let roster = this.rosterListService.getClanRoster(msg, ClanNames.Incredibles);
         let leaders = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Leader);
         let captains = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Captain);
         let knights = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Knight);
         let squires = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Squire);
         
         const rosterMessage = 
-`**${this.clan}**:
+`**${ClanNames.Incredibles}**:
 **Leaders**:
 ${leaders.map(l => l.nickName).join('\n')}
 
