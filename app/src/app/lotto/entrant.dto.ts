@@ -4,6 +4,6 @@ export class Entrant {
   name: string;
   numberOfTickets: number;
   avatarUri: string;
-  itemWon: ClanDistributionItem;
+  itemsWon: ClanDistributionItem[];
   isCurserSelected: boolean;
 }

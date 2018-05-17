@@ -40,7 +40,7 @@ client.on('message', msg => {
 
 client.on('guildMemberUpdate', (oldMember, newMember) => {
   let rulesChannel = client.channels
-    .filter(x => (<any>x).name == 'discord-rules-info')
+    .filter(x => (<any>x).name == 'rules-info')
     .map(x => x)[0];
 
   let wasSquire = false;

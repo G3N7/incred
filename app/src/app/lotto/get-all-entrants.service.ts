@@ -8,7 +8,7 @@ import { TicketOverrideService } from './ticket-override.service';
 
 @Injectable()
 export class GetAllEntrantsService {
-  private defaultTicketCount = 1;
+  private defaultTicketCount = 0;
 
   constructor(
     private _rosterService: RosterService,
@@ -23,7 +23,7 @@ export class GetAllEntrantsService {
     roster.forEach(r => {
       allEntrants.push({
         isCurserSelected: false,
-        itemWon: null,
+        itemsWon: [],
         name: r,
         numberOfTickets: this.defaultTicketCount,
         avatarUri: this._avatarLookupService.lookup(r)

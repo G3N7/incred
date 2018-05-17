@@ -6,6 +6,7 @@ import { attachEmbeddedView } from '@angular/core/src/view/view_attach';
 import { ShuffleService } from '../shuffle.service';
 import { RandomNumberService } from '../random-number.service';
 import { TicketOverrideService } from '../ticket-override.service';
+import { ClanDistributionItem } from '../clan-distribution-item.dto';
 
 @Component({
   selector: 'inc-all-entrants',
@@ -22,7 +23,7 @@ import { TicketOverrideService } from '../ticket-override.service';
 export class AllEntrantsComponent implements OnInit {
   allEntrants: Entrant[];
   blessedWinner: Entrant[] = [];
-  rAttributeStoneWinner: Entrant;
+  rAttributeStoneWinner: Entrant[] = [];
   sAttributeStoneWinner: Entrant[] = [];
   hgEquipBoxWinner: Entrant[] = [];
 
@@ -30,18 +31,15 @@ export class AllEntrantsComponent implements OnInit {
     private _getAllEntrantsService: GetAllEntrantsService,
     private _pickWinnerService: PickWinnerService,
     private _shuffleService: ShuffleService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.allEntrants = this._getAllEntrantsService.getAllEntrants();
   }
 
-  private _raffle(pickWinner: () => void) {
-    const entrantsThatHaveNotWon = this.allEntrants.filter(
-      x => x.itemWon == null
-    );
+  private _raffle(whatDidTheyWin: ClanDistributionItem, whereToPutThem: Entrant[]) {
     const shuffledEntrants = this._shuffleService.shuffle(
-      entrantsThatHaveNotWon
+      this.allEntrants
     );
 
     let currentDelay = 0;
@@ -58,56 +56,36 @@ export class AllEntrantsComponent implements OnInit {
 
     setTimeout(() => {
       shuffledEntrants.forEach(x => (x.isCurserSelected = false));
-      pickWinner();
+      const winner = this._pickWinnerService.pickWinner(this.allEntrants);
+      winner.itemsWon.push(whatDidTheyWin);
+      whereToPutThem.push(winner);
+      winner.numberOfTickets--;
     }, currentDelay + 200);
   }
 
   raffleBlessed(): void {
-    this._raffle(() => {
-      const blessedWinner = this._pickWinnerService.pickWinner(
-        this.allEntrants
-      );
-      blessedWinner.itemWon = {
-        imageUri: './assets/blessed-scroll-box.png',
-        name: 'Blessed Scroll Box'
-      };
-      this.blessedWinner.push(blessedWinner);
-    });
+    this._raffle({
+      imageUri: './assets/blessed-scroll-box.png',
+      name: 'Blessed Scroll Box'
+    }, this.blessedWinner);
   }
   raffleAttributeR(): void {
-    this._raffle(() => {
-      this.rAttributeStoneWinner = this._pickWinnerService.pickWinner(
-        this.allEntrants
-      );
-      this.rAttributeStoneWinner.itemWon = {
-        imageUri: './assets/attribute-stone-r-grade.png',
-        name: 'R - Attribute Stone'
-      };
-    });
+    this._raffle({
+      imageUri: './assets/attribute-stone-r-grade.png',
+      name: 'R - Attribute Stone'
+    }, this.rAttributeStoneWinner);
   }
   raffleAttributeS(): void {
-    this._raffle(() => {
-      const attributeStoneWinner = this._pickWinnerService.pickWinner(
-        this.allEntrants
-      );
-      attributeStoneWinner.itemWon = {
-        imageUri: './assets/attribute-stone-s-grade.png',
-        name: 'S - Attribute Stone'
-      };
-      this.sAttributeStoneWinner.push(attributeStoneWinner);
-    });
+    this._raffle({
+      imageUri: './assets/attribute-stone-s-grade.png',
+      name: 'S - Attribute Stone'
+    }, this.sAttributeStoneWinner);
   }
 
   raffleHgEquipBox(): void {
-    this._raffle(() => {
-      const hgEquipBoxWinner = this._pickWinnerService.pickWinner(
-        this.allEntrants
-      );
-      hgEquipBoxWinner.itemWon = {
-        imageUri: './assets/hg-equip-box.png',
-        name: '12 x HG Equip Box'
-      };
-      this.hgEquipBoxWinner.push(hgEquipBoxWinner);
-    });
+    this._raffle({
+      imageUri: './assets/hg-equip-box.png',
+      name: '12 x HG Equip Box'
+    }, this.hgEquipBoxWinner);
   }
 }

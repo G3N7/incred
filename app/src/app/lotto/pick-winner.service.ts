@@ -9,10 +9,9 @@ export class PickWinnerService {
   private randomNumberService: RandomNumberService) {}
 
   pickWinner(entrants: Entrant[]): Entrant {
-    const entrantsThatHaveNotWon = entrants.filter(x => x.itemWon == null);
     const allEntries = [];
 
-    entrantsThatHaveNotWon.forEach(entrant => {
+    entrants.forEach(entrant => {
       for (let i = 0; i < entrant.numberOfTickets; i++) {
         allEntries.push(entrant);
       }

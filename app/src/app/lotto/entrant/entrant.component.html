@@ -7,8 +7,7 @@
     <mat-card-subtitle>{{entrant.numberOfTickets}} tickets</mat-card-subtitle>
   </mat-card-header>
 
-  <img mat-card-image 
-    *ngIf="entrant.itemWon" 
-    [src]="entrant.itemWon.imageUri" 
-    [alt]="entrant.itemWon.name">
+  <img *ngFor="let itemWon of entrant.itemsWon" mat-card-image 
+    [src]="itemWon.imageUri" 
+    [alt]="itemWon.name">
 </mat-card>

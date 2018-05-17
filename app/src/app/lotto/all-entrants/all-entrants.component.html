@@ -1,19 +1,15 @@
 <div class="lotto-toolbox">
-  <button [disabled]="blessedWinner.length > 1" mat-raised-button color="primary" (click)="raffleBlessed()" >Raffle Blessed Box</button>
-  <button [disabled]="rAttributeStoneWinner != null" mat-raised-button color="primary" (click)="raffleAttributeR()">Raffle R - Attribute Stone</button>
-  <button [disabled]="sAttributeStoneWinner.length > 2" mat-raised-button color="primary" (click)="raffleAttributeS()">Raffle S - Attribute Stone</button>
-  <button [disabled]="hgEquipBoxWinner.length > 0" mat-raised-button color="primary" (click)="raffleHgEquipBox()">Raffle 10 x HG Equip Box</button>
+  <button [disabled]="rAttributeStoneWinner.length >= 2" mat-raised-button color="primary" (click)="raffleAttributeR()">Raffle R - Attribute Stone</button>
+  <button [disabled]="sAttributeStoneWinner.length >= 6" mat-raised-button color="primary" (click)="raffleAttributeS()">Raffle S - Attribute Stone</button>
 </div>
 
 <div class="lotto-entrants-container">
   <div class="lotto-winners mat-elevation-z8">
-    <inc-entrant *ngFor="let entrant of (allEntrants | winners)" [entrant]="entrant">
-  
+    <inc-entrant *ngFor="let entrant of (allEntrants | winners)" [entrant]="entrant">  
     </inc-entrant>
   </div>
   <div class="lotto-not-winners mat-elevation-z8">
-    <inc-entrant *ngFor="let entrant of (allEntrants | notWinners)" [entrant]="entrant">
-  
+    <inc-entrant *ngFor="let entrant of (allEntrants | notWinners)" [entrant]="entrant">  
     </inc-entrant>
   </div>
 </div>
