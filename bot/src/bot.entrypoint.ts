@@ -31,7 +31,7 @@ const messageHandlerService = new MessageHandlerService(handlers, client);
 
 client.on('ready', () => {
   console.log('bot up');
-  client.user.setActivity('Fazu like an accordion');
+  client.user.setActivity('revelry to muster the army!');
 });
 
 client.on('message', msg => {
