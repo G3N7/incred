@@ -38,19 +38,35 @@ client.on('message', msg => {
   messageHandlerService.handle(msg);
 });
 
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+  let generalChannel = client.channels
+    .filter(x => x.type == 'text' && (<any>x).name == 'general')
+    .map(x => <TextChannel>x)[0];
+
+
+  if (oldMember.serverMute != newMember.serverMute && newMember.serverMute) {
+    generalChannel.send(`<@!${newMember.id}> you have been Server Muted.  Please fix you mic, mute when your chatting to someone outside discord or ask why.  You will be automatically unmutted in 3min.`);    
+    setTimeout(() => {
+      newMember.setMute(false);
+      generalChannel.send(`<@!${newMember.id}> you have been unmuted.  Welcome back!`);
+      console.log('unmuted')
+    }, 180000);
+  }
+});
+
 client.on('guildMemberUpdate', (oldMember, newMember) => {
   let rulesChannel = client.channels
-    .filter(x => (<any>x).name == 'rules-info')
-    .map(x => x)[0];
+    .filter(x => x.type == 'text' && (<any>x).name == 'rules-info')
+    .map(x => <TextChannel>x)[0];
 
   let wasSquire = false;
   if (oldMember && oldMember.roles) wasSquire = oldMember.roles.filter(x => x.name == 'Squire').map(x => x).length > 0;
   let isSquire = false;
   if (newMember && newMember.roles) isSquire = newMember.roles.filter(x => x.name == 'Squire').map(x => x).length > 0;
 
-  if (!wasSquire && isSquire){
+  if (!wasSquire && isSquire) {
     newMember.send(`Welcome to the Clan, please take a look at <#${rulesChannel.id}>`)
-  }  
+  }
 });
 
 let token = (process.env.DISCORD_TOKEN || '').trim();
