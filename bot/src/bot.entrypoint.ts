@@ -68,3 +68,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
 
 let token = (process.env.DISCORD_TOKEN || '').trim();
 client.login(token);
+
+let gent = userLookup.findByUsername('Gent', '4068');
+let botChannel = channelLookupService.lookupByName('bot', ChannelType.text);
+botChannel.send(`<@!${gent.id}> I am up and running... just listening and waiting...`);
