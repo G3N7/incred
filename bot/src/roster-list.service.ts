@@ -25,13 +25,13 @@ export class RosterListService {
 
     getMembersByRole(msg: Message, clanRole: ClanRoles) {
         let discordMembers = msg.guild.members
-            .filter(x => _.includes(x.roles.map(r => r.name), ClanRoles.Squire))
+            .filter(x => _.includes(x.roles.map(r => r.name), clanRole))
             .map(x => x);
 
         let clanMembers = discordMembers.map(l => {
             let member: ClanMember = {
                 nickName: l.nickname || l.displayName,
-                friendlyRole: ClanRoles.Squire,
+                friendlyRole: clanRole,
                 discordRoles: l.roles.map(r => r.name)
             };
             return member;
