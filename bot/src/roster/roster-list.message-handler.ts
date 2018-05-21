@@ -13,9 +13,10 @@ export class RosterListMessageHandler extends BaseOfficerMessageHandler {
     }
 
     requiredRoles = [
-        `Leader`,
-        `Captain`,
-        `Knight`
+        ClanRoles.Leader,
+        ClanRoles.Elder,
+        ClanRoles.Captain,
+        ClanRoles.Knight
     ];
 
     selector(msg: Message): boolean {
