@@ -19,7 +19,7 @@ export class RosterListMessageHandler extends BaseOfficerMessageHandler {
     ];
 
     selector(msg: Message): boolean {
-        return msg.content.startsWith('roster list');
+        return msg.content.trim() === '!roster list';
     }
     handle(msg: Message): void {
 
