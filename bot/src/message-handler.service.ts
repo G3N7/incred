@@ -39,7 +39,6 @@ export class MessageHandlerService {
         
             if (userHasRequiredRoles) {
               h.handle(msg);
-              console.log(`Handled`);
             }
           });
     }

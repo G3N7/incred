@@ -46,7 +46,6 @@ export class AllEntrantsComponent implements OnInit {
     shuffledEntrants.forEach((entrant, index) => {
       currentDelay += 200;
       setTimeout(() => {
-        console.log(`Highlighting ${entrant.name}`);
         if (index > 0) {
           shuffledEntrants[index - 1].isCurserSelected = false;
         }
