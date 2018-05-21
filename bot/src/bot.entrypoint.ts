@@ -45,7 +45,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 
 
   if (oldMember.serverMute != newMember.serverMute && newMember.serverMute) {
-    generalChannel.send(`<@!${newMember.id}> you have been Server Muted.  Please fix you mic, mute when your chatting to someone outside discord or ask why.  You will be automatically unmutted in 3min.`);    
+    generalChannel.send(`<@!${newMember.id}> you have been Server muted.  Please fix you mic, mute when your chatting to someone outside discord or ask why.  You will be automatically unmuted in 3min.`);    
     setTimeout(() => {
       newMember.setMute(false);
       generalChannel.send(`<@!${newMember.id}> you have been unmuted.  Welcome back!`);
