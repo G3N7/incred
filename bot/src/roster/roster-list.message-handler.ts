@@ -3,7 +3,8 @@ import { UserLookupService } from "../user-lookup.service";
 import _ = require("lodash");
 import { ClanNames } from "../clan-names.enum";
 import { BaseOfficerMessageHandler } from "../base-officer.message-handler";
-import { RosterListService, ClanRoles } from "../roster-list.service";
+import { RosterListService } from "../roster-list.service";
+import { ClanRoles } from "../clan-roles.enum";
 
 export class RosterListMessageHandler extends BaseOfficerMessageHandler {
 
@@ -23,7 +24,7 @@ export class RosterListMessageHandler extends BaseOfficerMessageHandler {
     handle(msg: Message): void {
 
         let roster = this.rosterListService.getClanRoster(msg, ClanNames.Incredibles);
-        let leaders = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Leader);
+        let leaders = this.rosterListService.getMembersByRole(msg, ClanRoles.Leader);
         let captains = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Captain);
         let knights = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Knight);
         let squires = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Squire);

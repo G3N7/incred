@@ -12,6 +12,8 @@ import { ClanNames } from './clan-names.enum';
 import { RosterListService } from './roster-list.service';
 import { MasterMessageHandler } from './call-response/master.message-handler';
 import { SkynetMessageHandler } from './call-response/skynet.message-handler';
+import { ChannelLookupService, ChannelType } from './channel-lookup.service';
+import { ClanRoles } from './clan-roles.enum';
 
 dotenv.config();
 
@@ -28,6 +30,7 @@ const handlers = [
   new TestMessageHandler()
 ];
 const messageHandlerService = new MessageHandlerService(handlers, client);
+const channelLookupService = new ChannelLookupService(client);
 
 client.on('ready', () => {
   console.log('bot up');
@@ -39,30 +42,24 @@ client.on('message', msg => {
 });
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-  let generalChannel = client.channels
-    .filter(x => x.type == 'text' && (<any>x).name == 'general')
-    .map(x => <TextChannel>x)[0];
-
-
+  let generalChannel: TextChannel = channelLookupService.lookupByName('general', ChannelType.text);
+  
   if (oldMember.serverMute != newMember.serverMute && newMember.serverMute) {
     generalChannel.send(`<@!${newMember.id}> you have been Server muted.  Please fix you mic, mute when your chatting to someone outside discord or ask why.  You will be automatically unmuted in 3min.`);    
     setTimeout(() => {
       newMember.setMute(false);
       generalChannel.send(`<@!${newMember.id}> you have been unmuted.  Welcome back!`);
-      console.log('unmuted')
     }, 180000);
   }
 });
 
 client.on('guildMemberUpdate', (oldMember, newMember) => {
-  let rulesChannel = client.channels
-    .filter(x => x.type == 'text' && (<any>x).name == 'rules-info')
-    .map(x => <TextChannel>x)[0];
+  let rulesChannel: TextChannel = channelLookupService.lookupByName('rules-info', ChannelType.text);  
 
   let wasSquire = false;
-  if (oldMember && oldMember.roles) wasSquire = oldMember.roles.filter(x => x.name == 'Squire').map(x => x).length > 0;
+  if (oldMember && oldMember.roles) wasSquire = oldMember.roles.filter(x => x.name == ClanRoles.Squire).map(x => x).length > 0;
   let isSquire = false;
-  if (newMember && newMember.roles) isSquire = newMember.roles.filter(x => x.name == 'Squire').map(x => x).length > 0;
+  if (newMember && newMember.roles) isSquire = newMember.roles.filter(x => x.name == ClanRoles.Squire).map(x => x).length > 0;
 
   if (!wasSquire && isSquire) {
     newMember.send(`Welcome to the Clan, please take a look at <#${rulesChannel.id}>`)

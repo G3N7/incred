@@ -14,4 +14,8 @@
     "todohighlight.include": "{**/*.ts,**/*.html,**/*.scss}",
     "todohighlight.keywords": ["todo:"],
     "prettier.singleQuote": true,
+    "cSpell.words": [
+        "Incredibles",
+        "Skynet"
+    ],
 }

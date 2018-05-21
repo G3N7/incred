@@ -1,83 +1,42 @@
 import { ClanNames } from "./clan-names.enum";
 import { Message } from "discord.js";
 import _ = require("lodash");
+import { ClanRoles } from "./clan-roles.enum";
+import { ClanMember } from "./clan-member.interface";
+import { ClanRoster } from "./clan-roster.interface";
 
 export class RosterListService {
     getClanRoster(msg: Message, clanName: ClanNames): ClanRoster {
-        let leaders = msg.guild.members
-        .filter(x=> _.includes(x.roles.map(r => r.name), `${clanName}-Leader`))
-        .map(x => x);
-        let captains = msg.guild.members
-        .filter(x=> _.includes(x.roles.map(r => r.name), `${clanName}-Captain`))
-        .map(x => x);
-        let knights = msg.guild.members
-        .filter(x=> _.includes(x.roles.map(r => r.name), `${clanName}-Knight`))
-        .map(x => x);
-        let squires = msg.guild.members
-        .filter(x=> _.includes(x.roles.map(r => r.name), `${clanName}-Squire`))
-        .map(x => x);
+        let leaderMembers = this.getMembersByRole(msg, ClanRoles.Leader);
+        let elderMembers = this.getMembersByRole(msg, ClanRoles.Elder);
+        let captainsMembers = this.getMembersByRole(msg, ClanRoles.Captain);
+        let knightsMembers = this.getMembersByRole(msg, ClanRoles.Knight);
+        let squiresMembers = this.getMembersByRole(msg, ClanRoles.Squire);
 
-        let leaderMembers = leaders.map(l => {
+        return {
+            allMembers: [
+                ...leaderMembers,
+                ...elderMembers,
+                ...captainsMembers,
+                ...knightsMembers,
+                ...squiresMembers]
+        };
+    }
+
+    getMembersByRole(msg: Message, clanRole: ClanRoles) {
+        let discordMembers = msg.guild.members
+            .filter(x => _.includes(x.roles.map(r => r.name), ClanRoles.Squire))
+            .map(x => x);
+
+        let clanMembers = discordMembers.map(l => {
             let member: ClanMember = {
                 nickName: l.nickname || l.displayName,
-                clanName: clanName,
-                friendlyRole: ClanRoles.Leader,
-                discordRoles: l.roles.map(r => r.name)
-            };            
-            return member;
-        });
-
-        let captainsMembers = captains.map(l => {
-            let member: ClanMember = {
-                nickName: l.nickname || l.displayName,
-                clanName: clanName,
-                friendlyRole: ClanRoles.Captain,
-                discordRoles: l.roles.map(r => r.name)
-            };            
-            return member;
-        });
-
-        let knightsMembers = knights.map(l => {
-            let member: ClanMember = {
-                nickName: l.nickname || l.displayName,
-                clanName: clanName,
-                friendlyRole: ClanRoles.Captain,
-                discordRoles: l.roles.map(r => r.name)
-            };            
-            return member;
-        });
-
-        let squiresMembers = squires.map(l => {
-            let member: ClanMember = {
-                nickName: l.nickname || l.displayName,
-                clanName: clanName,
                 friendlyRole: ClanRoles.Squire,
                 discordRoles: l.roles.map(r => r.name)
-            };            
+            };
             return member;
         });
 
-        return {allMembers: leaderMembers
-            .concat(captainsMembers)
-            .concat(knightsMembers)
-            .concat(squiresMembers)};
+        return clanMembers;
     }
-}
-
-export class ClanRoster {
-    allMembers: ClanMember[];    
-}
-
-export class ClanMember {
-    nickName: string;
-    clanName: ClanNames;
-    friendlyRole: ClanRoles;
-    discordRoles: string[];
-}
-
-export enum ClanRoles {
-    Squire = 'Squire',
-    Leader = 'Leader',
-    Captain = 'Captain',
-    Knight = 'Knight'
 }
