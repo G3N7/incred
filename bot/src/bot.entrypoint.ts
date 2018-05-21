@@ -33,8 +33,13 @@ const messageHandlerService = new MessageHandlerService(handlers, client);
 const channelLookupService = new ChannelLookupService(client);
 
 client.on('ready', () => {
-  console.log('bot up');
   client.user.setActivity('revelry to muster the army!');
+
+  let gent = userLookup.findByUsername('Gent', '4068');
+  let botChannel = channelLookupService.lookupByName<TextChannel>('bot', ChannelType.text);
+  botChannel.send(`<@!${gent.id}> I am up and running... just listening and waiting...`);
+  
+  console.log('bot up');
 });
 
 client.on('message', msg => {
@@ -42,10 +47,10 @@ client.on('message', msg => {
 });
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-  let generalChannel: TextChannel = channelLookupService.lookupByName('general', ChannelType.text);
-  
+  let generalChannel = channelLookupService.lookupByName<TextChannel>('general', ChannelType.text);;
+
   if (oldMember.serverMute != newMember.serverMute && newMember.serverMute) {
-    generalChannel.send(`<@!${newMember.id}> you have been Server muted.  Please fix you mic, mute when your chatting to someone outside discord or ask why.  You will be automatically unmuted in 3min.`);    
+    generalChannel.send(`<@!${newMember.id}> you have been Server muted.  Please fix you mic, mute when your chatting to someone outside discord or ask why.  You will be automatically unmuted in 3min.`);
     setTimeout(() => {
       newMember.setMute(false);
       generalChannel.send(`<@!${newMember.id}> you have been unmuted.  Welcome back!`);
@@ -54,7 +59,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 });
 
 client.on('guildMemberUpdate', (oldMember, newMember) => {
-  let rulesChannel: TextChannel = channelLookupService.lookupByName('rules-info', ChannelType.text);  
+  let rulesChannel = channelLookupService.lookupByName<TextChannel>('rules-info', ChannelType.text);
 
   let wasSquire = false;
   if (oldMember && oldMember.roles) wasSquire = oldMember.roles.filter(x => x.name == ClanRoles.Squire).map(x => x).length > 0;
@@ -68,7 +73,3 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
 
 let token = (process.env.DISCORD_TOKEN || '').trim();
 client.login(token);
-
-let gent = userLookup.findByUsername('Gent', '4068');
-let botChannel = channelLookupService.lookupByName('bot', ChannelType.text);
-botChannel.send(`<@!${gent.id}> I am up and running... just listening and waiting...`);
