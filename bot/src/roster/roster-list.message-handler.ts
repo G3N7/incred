@@ -23,11 +23,10 @@ export class RosterListMessageHandler extends BaseOfficerMessageHandler {
     }
     handle(msg: Message): void {
 
-        let roster = this.rosterListService.getClanRoster(msg, ClanNames.Incredibles);
         let leaders = this.rosterListService.getMembersByRole(msg, ClanRoles.Leader);
-        let captains = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Captain);
-        let knights = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Knight);
-        let squires = roster.allMembers.filter(m => m.friendlyRole == ClanRoles.Squire);
+        let captains = this.rosterListService.getMembersByRole(msg, ClanRoles.Captain);
+        let knights = this.rosterListService.getMembersByRole(msg, ClanRoles.Knight);
+        let squires = this.rosterListService.getMembersByRole(msg, ClanRoles.Squire);
         
         const rosterMessage = 
 `**${ClanNames.Incredibles}**:
