@@ -29,18 +29,19 @@
   },
   "homepage": "https://github.com/G3N7/incred#readme",
   "dependencies": {
-    "commander": "^2.14.1",
-    "discord.js": "^11.3.0",
-    "dotenv": "^5.0.1",
-    "lodash": "^4.17.5",
-    "mongodb": "^3.0.4",
-    "mongoose": "^5.0.10",
-    "typescript": "^2.8.3",
     "@types/dotenv": "^4.0.2",
     "@types/lodash": "^4.14.105",
     "@types/mongodb": "^3.0.8",
     "@types/mongoose": "^5.0.7",
-    "@types/node": "^9.4.6"
+    "@types/node": "^9.4.6",
+    "commander": "^2.14.1",
+    "discord.js": "^11.3.0",
+    "dotenv": "^5.0.1",
+    "googleapis": "^27.0.0",
+    "lodash": "^4.17.5",
+    "mongodb": "^3.0.4",
+    "mongoose": "^5.0.10",
+    "typescript": "^2.8.3"
   },
   "devDependencies": {
     "nodemon": "^1.17.1",

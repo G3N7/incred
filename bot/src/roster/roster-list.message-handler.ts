@@ -23,7 +23,6 @@ export class RosterListMessageHandler extends BaseOfficerMessageHandler {
         return msg.content.trim() === '!roster list';
     }
     handle(msg: Message): void {
-
         let leaders = this.rosterListService.getMembersByRole(msg, ClanRoles.Leader);
         let captains = this.rosterListService.getMembersByRole(msg, ClanRoles.Captain);
         let knights = this.rosterListService.getMembersByRole(msg, ClanRoles.Knight);

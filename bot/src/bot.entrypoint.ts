@@ -14,6 +14,7 @@ import { MasterMessageHandler } from './call-response/master.message-handler';
 import { SkynetMessageHandler } from './call-response/skynet.message-handler';
 import { ChannelLookupService, ChannelType } from './channel-lookup.service';
 import { ClanRoles } from './clan-roles.enum';
+import { GoogleRosterListService } from './google-roster-list.service';
 
 dotenv.config();
 
@@ -31,14 +32,16 @@ const handlers = [
 ];
 const messageHandlerService = new MessageHandlerService(handlers, client);
 const channelLookupService = new ChannelLookupService(client);
+const googleRosterListService = new GoogleRosterListService();
+//googleRosterListService.getClanRoster();
 
 client.on('ready', () => {
   client.user.setActivity('revelry to muster the army!');
 
   let gent = userLookup.findByUsername('Gent', '4068');
   let botChannel = channelLookupService.lookupByName<TextChannel>('bot', ChannelType.text);
-  botChannel.send(`<@!${gent.id}> I am up and running... just listening and waiting...`);
-  
+  //botChannel.send(`<@!${gent.id}> I am up and running... just listening and waiting...`);
+
   console.log('bot up');
 });
 
