@@ -7,8 +7,12 @@ export class SkynetMessageHandler extends BaseAllianceMessageHandler {
     super();
   }
   selector(msg: Message): boolean {
-    return msg.content.toLocaleLowerCase().includes('skynet');
+    const includeSkynet = msg.content.toLocaleLowerCase().includes('skynet');
+    const gent = this.userLookup.findByUsername('Gent', '4068');
+    const isGent = msg.author.id === gent.id;
+    return includeSkynet && isGent;
   }
+  
   handle(msg: Message): void {
     const gentle = this.userLookup.findByUsername('Gent', '4068');
     
