@@ -23,7 +23,7 @@ const userLookup = new UserLookupService(client);
 const rosterListService = new RosterListService();
 const handlers = [
   new GentleArmySummonMessageHandler(userLookup),
-  new HotTimeMessageHandler(userLookup),
+  //new HotTimeMessageHandler(userLookup),
   new MasterMessageHandler(userLookup),
   new SkynetMessageHandler(userLookup),
   new CanIKillHandler(userLookup),
