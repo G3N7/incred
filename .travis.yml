@@ -4,12 +4,10 @@ node_js:
   - "8"
 
 before_script: 
-  - cd bot && npm install && npm build
-  
-after_success:
-  - cd ..
-  - ls
-  - echo "done with deploy"
+  - cd bot
+  - npm install
+  - npm build
+  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
 
 deploy:
   provider: elasticbeanstalk
