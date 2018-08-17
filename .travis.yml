@@ -1,12 +1,12 @@
 language: node_js
 
 node_js:
-  - "6"
+  - "8"
 
 before_script: 
   - cd bot && npm install && npm build
-  - cd ../app && npm install && ng build --prod
-
+  
 after_success:
   - cd ..
   - ls
+  - echo "done with deploy"
