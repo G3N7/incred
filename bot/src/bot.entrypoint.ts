@@ -49,6 +49,21 @@ client.on('message', msg => {
   messageHandlerService.handle(msg);
 });
 
+client.on('messageReactionAdd', msg => {
+  console.log('react add detected');
+  if (msg.emoji.name == 'mag_right' || msg.emoji.name == 'mag_left'){
+    console.log('reacting to mag')
+    msg.message.react("fire");
+    console.log('sending message to channel')
+    msg.message.channel.send(`:fire: BURN THE NON-BELIEVERS :fire:`);
+  }
+});
+
+
+client.on('messageReactionAdd', msg => {
+  console.log('react remove detected');  
+});
+
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   let generalChannel = channelLookupService.lookupByName<TextChannel>('general', ChannelType.text);;
 
