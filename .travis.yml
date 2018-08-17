@@ -6,7 +6,7 @@ node_js:
 before_script: 
   - cd bot
   - npm install
-  - npm build
+  - npm run build
   - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
 
 deploy:
