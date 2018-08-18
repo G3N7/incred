@@ -1,4 +1,4 @@
-import { Client, GuildChannel, TextChannel } from 'discord.js';
+import { Client, GuildChannel, TextChannel, Emoji } from 'discord.js';
 import { UserLookupService } from './user-lookup.service';
 import { GentleArmySummonMessageHandler } from './call-response/gentle-army-summon.message-handler';
 import { HotTimeMessageHandler } from './call-response/hot-time.message-handler';
@@ -53,10 +53,10 @@ client.on('message', msg => {
 
 client.on('messageReactionAdd', msg => {
   console.log('react add detected');
-  console.log(msg.emoji.name);
-  if (msg.emoji.name == 'mag_right' || msg.emoji.name == 'mag_left'){
+  console.log(msg.emoji);
+  if (msg.emoji.name == '🔍' || msg.emoji.name == '🔎'){
     console.log('reacting to mag')
-    msg.message.react("fire");
+    msg.message.react('🔥');
     console.log('sending message to channel')
     msg.message.channel.send(`:fire: BURN THE NON-BELIEVERS :fire:`);
   }
