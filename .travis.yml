@@ -10,6 +10,7 @@ before_script:
 script:
   - npm run build
   - npm prune --production
+  - zip -r bot.zip .
   
 deploy:
   provider: elasticbeanstalk
@@ -22,3 +23,4 @@ deploy:
   bucket_name: "elasticbeanstalk-us-west-2-810032046333"
   bucket_path: "incred-bot"
   skip_cleanup: true
+  zip_file: "bot.zip"
