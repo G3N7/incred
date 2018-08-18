@@ -11,7 +11,9 @@ before_script:
 
 script:
   - npm run build
-  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
+
+before_deploy:
+  - rm -rf node_modules
 
 deploy:
   provider: elasticbeanstalk
