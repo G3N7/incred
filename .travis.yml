@@ -11,8 +11,6 @@ before_script:
 
 script:
   - npm run build
-
-before_deploy:
   - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
   - zip -qr bot.zip * -x "node_modules/*"
   - cat .env
