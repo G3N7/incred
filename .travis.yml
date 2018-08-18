@@ -24,3 +24,4 @@ deploy:
   on:
     branch: master
   zip_file: bot.zip
+  skip_cleanup: true
