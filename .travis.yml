@@ -9,6 +9,7 @@ before_script:
 
 script:
   - npm run build
+  - npm prune --production
   
 deploy:
   provider: elasticbeanstalk
