@@ -6,11 +6,11 @@ node_js:
 sudo: required
 
 before_script:
-  - cd bot
-  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
-  - npm install
-  - npm build
-  - zip bot
+  - cd bot && ls
+  - ls && echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
+  - ls && npm install
+  - ls && npm build
+  - ls && zip bot
 
 deploy:
   provider: elasticbeanstalk
