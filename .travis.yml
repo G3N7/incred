@@ -12,7 +12,7 @@ before_script:
 script:
   - npm run build
   - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
-  - zip -qr bot.zip . -x "node_modules/*"
+  - zip -qr bot.zip .
   - unzip -d /tmp/ bot.zip
   - ls /tmp/
   - cat .env
