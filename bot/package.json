@@ -8,6 +8,7 @@
     "start": "node ./dist/bot.entrypoint.js",
     "postinstall": "tsc",
     "build": "tsc",
+    "start-aws": "ls",
     "watch:start": "npm-run-all clean build --parallel watch:build watch:run --print-label",
     "watch:build": "tsc --watch",
     "watch:run": "nodemon ./dist/bot.entrypoint.js --delay 2500ms --watch ./dist"
