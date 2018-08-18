@@ -16,7 +16,9 @@ import { ChannelLookupService, ChannelType } from './channel-lookup.service';
 import { ClanRoles } from './clan-roles.enum';
 import { GoogleRosterListService } from './google-roster-list.service';
 
-dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 const client = new Client();
 const userLookup = new UserLookupService(client);
