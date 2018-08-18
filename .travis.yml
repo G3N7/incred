@@ -9,7 +9,7 @@ before_script:
   - cd bot
   - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
   - npm install
-  - npm build
+  - npm run build
   - zip bot *
 
 deploy:
