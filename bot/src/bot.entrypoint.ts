@@ -52,16 +52,11 @@ client.on('message', msg => {
 });
 
 client.on('messageReactionAdd', msg => {
-  console.log('react add detected');
-  console.log(msg.emoji);
   if (msg.emoji.name == '🔍' || msg.emoji.name == '🔎'){
-    console.log('reacting to mag')
     msg.message.react('🔥');
-    console.log('sending message to channel')
     msg.message.channel.send(`:fire: BURN THE NON-BELIEVERS :fire:`);
   }
 });
-
 
 client.on('messageReactionAdd', msg => {
   console.log('react remove detected');  
