@@ -23,3 +23,4 @@ deploy:
   env: "incred-bot-prod"
   bucket_name: "elasticbeanstalk-us-west-2-810032046333"
   bucket_path: "incred-bot"
+  skip_cleanup: true
