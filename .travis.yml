@@ -14,7 +14,7 @@ script:
   - npm run build
 
 after_script:
-  - zip -qr bot.zip *
+  - zip -r bot.zip * -x "node_modules/*"
 
 deploy:
   provider: elasticbeanstalk
