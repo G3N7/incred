@@ -5,7 +5,7 @@
   "main": "dist/bot.entrypoint.js",
   "scripts": {
     "clean": "rimraf dist",
-    "start": "tsc && node ./dist/bot.entrypoint.js",
+    "start": "node ./dist/bot.entrypoint.js",
     "postinstall": "tsc",
     "build": "tsc",
     "watch:start": "npm-run-all clean build --parallel watch:build watch:run --print-label",

@@ -4,10 +4,7 @@ node_js:
   - "8"
 
 before_script: 
-  - cd bot
-  - npm install
-  - npm run build
-  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
+  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> /bot/.env
 
 deploy:
   provider: elasticbeanstalk
