@@ -6,12 +6,9 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package.json .
 COPY package-lock.json .
-RUN npm install
+RUN npm install --production
 
 # Bundle app source
 COPY . .
-
-# Compile Source
-RUN npm build
 
 CMD [ "npm", "start" ]

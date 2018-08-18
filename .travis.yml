@@ -3,8 +3,12 @@ language: node_js
 node_js:
   - "8"
 
-script: 
-  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> bot/.env
+script:
+  - cd bot
+  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
+  - npm install
+  - npm build
+  - rm -rf node_modules
   
 deploy:
   provider: elasticbeanstalk
