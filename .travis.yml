@@ -10,7 +10,8 @@ before_script:
   - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
   - npm install
   - npm build
-  - zip bot .
+  - cd ..
+  - zip bot bot
 
 deploy:
   provider: elasticbeanstalk
@@ -23,4 +24,4 @@ deploy:
   bucket_name: "elasticbeanstalk-us-west-2-810032046333"
   on:
     branch: master
-  zip_file: bot
+  zip_file: bot.zip
