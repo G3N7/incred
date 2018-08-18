@@ -10,7 +10,7 @@ before_script:
 script:
   - npm run build
   - npm prune --production
-  - zip -r bot.zip .
+  - zip -qr bot.zip .
   
 deploy:
   provider: elasticbeanstalk
