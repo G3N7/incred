@@ -10,7 +10,7 @@ before_script:
   - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
   - npm install
   - npm build
-  - zip bot .
+  - zip bot *
 
 deploy:
   provider: elasticbeanstalk
