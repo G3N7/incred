@@ -7,26 +7,27 @@ sudo: required
 
 before_script:
   - cd bot
-  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
   - npm install
 
 script:
   - npm run build
 
 before_deploy:
+  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
   - zip -qr bot.zip * -x "node_modules/*"
+  - cat .env
 
-deploy:
-  provider: elasticbeanstalk
-  access_key_id: $ACCESSKEYID
-  secret_access_key:
-    secure: "$SECRETACCESSKEY"
-  region: "us-west-2"
-  app: "incred-bot"
-  env: "incred-bot-prod"
-  bucket_name: "elasticbeanstalk-us-west-2-810032046333"
-  bucket_path: "incred-bot"
-  on:
-    branch: master
-  zip_file: bot.zip
-  skip_cleanup: true
+# deploy:
+#   provider: elasticbeanstalk
+#   access_key_id: $ACCESSKEYID
+#   secret_access_key:
+#     secure: "$SECRETACCESSKEY"
+#   region: "us-west-2"
+#   app: "incred-bot"
+#   env: "incred-bot-prod"
+#   bucket_name: "elasticbeanstalk-us-west-2-810032046333"
+#   bucket_path: "incred-bot"
+#   on:
+#     branch: master
+#   zip_file: bot.zip
+#   skip_cleanup: true
