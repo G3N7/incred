@@ -11,8 +11,6 @@ before_script:
 
 script:
   - npm run build
-
-before_deploy:
   - rm -rf node_modules
   - ls
   - ls dist
