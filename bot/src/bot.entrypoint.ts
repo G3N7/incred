@@ -38,7 +38,7 @@ const googleRosterListService = new GoogleRosterListService();
 //googleRosterListService.getClanRoster();
 
 client.on('ready', () => {
-  client.user.setActivity('revelry to muster the army!');
+  client.user.setActivity('revelry to muster the Gentle Army!');
 
   let gent = userLookup.findByUsername('Gent', '4068');
   let botChannel = channelLookupService.lookupByName<TextChannel>('bot', ChannelType.text);
@@ -53,6 +53,7 @@ client.on('message', msg => {
 
 client.on('messageReactionAdd', msg => {
   console.log('react add detected');
+  console.log(msg.emoji.name);
   if (msg.emoji.name == 'mag_right' || msg.emoji.name == 'mag_left'){
     console.log('reacting to mag')
     msg.message.react("fire");
