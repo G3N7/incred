@@ -25,6 +25,7 @@ deploy:
   app: "incred-bot"
   env: "incred-bot-prod"
   bucket_name: "elasticbeanstalk-us-west-2-810032046333"
+  bucket_path: "incred-bot"
   on:
     branch: master
   zip_file: bot.zip
