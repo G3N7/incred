@@ -3,15 +3,17 @@ language: node_js
 node_js:
   - "8"
 
-services:
-  - docker
+sudo: required
 
-script:
+before_script:
   - cd bot
   - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
   - npm install
   - npm build
   - rm -rf node_modules
+
+services:
+  - docker
   
 deploy:
   provider: elasticbeanstalk
