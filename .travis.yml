@@ -12,17 +12,15 @@ before_script:
 script:
   - npm run build
   - rm -rf node_modules
-  - ls
-  - ls dist
   
-# deploy:
-#   provider: elasticbeanstalk
-#   access_key_id: $ACCESSKEYID
-#   secret_access_key:
-#     secure: "$SECRETACCESSKEY"
-#   region: "us-west-2"
-#   app: "incred-bot"
-#   env: "incred-bot-prod"
-#   bucket_name: "elasticbeanstalk-us-west-2-810032046333"
-#   bucket_path: "incred-bot"
-#   skip_cleanup: true
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESSKEYID
+  secret_access_key:
+    secure: "$SECRETACCESSKEY"
+  region: "us-west-2"
+  app: "incred-bot"
+  env: "incred-bot-prod"
+  bucket_name: "elasticbeanstalk-us-west-2-810032046333"
+  bucket_path: "incred-bot"
+  skip_cleanup: true
