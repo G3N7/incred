@@ -13,7 +13,7 @@ before_script:
 script:
   - npm run build
 
-after_script:
+before_deploy:
   - zip -qr bot.zip * -x "node_modules/*"
 
 deploy:
