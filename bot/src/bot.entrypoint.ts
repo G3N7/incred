@@ -38,7 +38,7 @@ const googleRosterListService = new GoogleRosterListService();
 //googleRosterListService.getClanRoster();
 
 client.on('ready', () => {
-  client.user.setActivity('revelry to muster the Gentle Army!');
+  client.user.setActivity('revelry to muster the Army!');
 
   let gent = userLookup.findByUsername('Gent', '4068');
   let botChannel = channelLookupService.lookupByName<TextChannel>('bot', ChannelType.text);
