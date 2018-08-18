@@ -12,8 +12,8 @@ deploy:
   secret_access_key:
     secure: "$SECRETACCESSKEY"
   region: "us-west-2"  
-  app: "incred-bot"
-  env: "incred-bot-prod"
+  app: "incred-bot-prod"
+  env: "incred-bot-prod-env"
   bucket_name: "elasticbeanstalk-us-west-2-810032046333"
   on:
     branch: master
