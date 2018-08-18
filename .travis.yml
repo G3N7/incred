@@ -3,15 +3,12 @@ language: node_js
 node_js:
   - "8"
 
-sudo: required
-
 before_script:
   - cd bot
   - npm install
 
 script:
   - npm run build
-  - rm -rf node_modules
   
 deploy:
   provider: elasticbeanstalk
