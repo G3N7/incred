@@ -3,9 +3,9 @@ language: node_js
 node_js:
   - "8"
 
-before_script: 
-  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> /bot/.env
-
+script: 
+  - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> bot/.env
+  
 deploy:
   provider: elasticbeanstalk
   access_key_id: $ACCESSKEYID
