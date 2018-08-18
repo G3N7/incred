@@ -12,8 +12,11 @@ before_script:
 script:
   - npm run build
   - echo "DISCORD_TOKEN=${DISCORD_TOKEN}" >> .env
-  - zip -qr bot.zip * .* -x "node_modules/*"
-  
+  - zip -qr bot.zip * .env -x "node_modules/*"
+  - unzip -d /tmp/ bot.zip
+  - ls /tmp/
+  - cat .env
+
 deploy:
   provider: elasticbeanstalk
   access_key_id: $ACCESSKEYID
