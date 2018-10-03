@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/bot.entrypoint.js",
+  "engines": {
+    "node": "8.x",
+    "npm": "5.x"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "start": "node ./dist/bot.entrypoint.js",
