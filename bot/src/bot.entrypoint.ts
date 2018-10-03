@@ -11,8 +11,8 @@ import { MasterMessageHandler } from './call-response/master.message-handler';
 import { SkynetMessageHandler } from './call-response/skynet.message-handler';
 import { ChannelLookupService, ChannelType } from './channel-lookup.service';
 import { ClanRoles } from './clan-roles.enum';
-import { GoogleRosterListService } from './google-roster-list.service';
 import { RosterPresentMessageHandler } from './roster/roster-present.message-handler';
+import { RosterHelpMessageHandler } from './roster/roster-help.message-handler';
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
@@ -28,6 +28,7 @@ const handlers = [
   new MasterMessageHandler(userLookup),
   new SkynetMessageHandler(userLookup),
   new CanIKillHandler(userLookup),
+  new RosterHelpMessageHandler(),
   new RosterListMessageHandler(rosterListService),
   new RosterPresentMessageHandler(channelLookupService),
   new TestMessageHandler()

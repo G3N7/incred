@@ -5,7 +5,7 @@ import { ChannelType, ChannelLookupService } from "../channel-lookup.service";
 
 export class RosterHelpMessageHandler extends BaseOfficerMessageHandler {
 
-    constructor(private channelLookupService: ChannelLookupService){
+    constructor(){
         super();
     }
 
