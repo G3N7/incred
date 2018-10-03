@@ -24,7 +24,9 @@ export class RosterPresentMessageHandler extends BaseOfficerMessageHandler {
         .filter(c=> c.name == "General" && c.type == "voice")
         .map(c => c)[0];
                
-        const memberNames = generalVoiceChannel.members.map(x => x.nickname);
+        const memberNames = generalVoiceChannel.members.map(x => {
+            return `${x.nickname}${x.deaf ? ' 🎧' : ''}`
+        });
                
         const officerChannel = this.channelLookupService.lookupByName<TextChannel>("officers", ChannelType.text);
 
