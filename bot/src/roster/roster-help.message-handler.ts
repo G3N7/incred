@@ -20,6 +20,12 @@ export class RosterHelpMessageHandler extends BaseOfficerMessageHandler {
         return msg.content.trim() === '!roster help' || msg.content.trim() === '!roster';
     }
     handle(msg: Message): void {
-        msg.channel.send(`Commands:\n\`!roster list\`\n\`!roster present\``);
+        const commandList = [
+            `Commands:`,
+            `\`!roster list\` - Lists all members by their rights in discord`,
+            `\`!roster present\` - Captures a snapshot of who is present in General voice chat`
+        ];
+
+        msg.channel.send(commandList.join("\n"));
     }
 }
