@@ -1,20 +1,18 @@
-import { Client, GuildChannel, TextChannel, Emoji } from 'discord.js';
+import { Client, TextChannel } from 'discord.js';
 import { UserLookupService } from './user-lookup.service';
 import { GentleArmySummonMessageHandler } from './call-response/gentle-army-summon.message-handler';
-import { HotTimeMessageHandler } from './call-response/hot-time.message-handler';
 import * as dotenv from 'dotenv';
 import { TestMessageHandler } from './test.message-handler';
-import _ = require('lodash');
 import { CanIKillHandler } from './call-response/can-i-kill.message-handler';
 import { RosterListMessageHandler } from './roster/roster-list.message-handler';
 import { MessageHandlerService } from './message-handler.service';
-import { ClanNames } from './clan-names.enum';
 import { RosterListService } from './roster-list.service';
 import { MasterMessageHandler } from './call-response/master.message-handler';
 import { SkynetMessageHandler } from './call-response/skynet.message-handler';
 import { ChannelLookupService, ChannelType } from './channel-lookup.service';
 import { ClanRoles } from './clan-roles.enum';
 import { GoogleRosterListService } from './google-roster-list.service';
+import { RosterPresentMessageHandler } from './roster/roster-present.message-handler';
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
@@ -23,6 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 const client = new Client();
 const userLookup = new UserLookupService(client);
 const rosterListService = new RosterListService();
+const channelLookupService = new ChannelLookupService(client);
 const handlers = [
   new GentleArmySummonMessageHandler(userLookup),
   //new HotTimeMessageHandler(userLookup),
@@ -30,18 +29,16 @@ const handlers = [
   new SkynetMessageHandler(userLookup),
   new CanIKillHandler(userLookup),
   new RosterListMessageHandler(rosterListService),
+  new RosterPresentMessageHandler(channelLookupService),
   new TestMessageHandler()
 ];
 const messageHandlerService = new MessageHandlerService(handlers, client);
-const channelLookupService = new ChannelLookupService(client);
-const googleRosterListService = new GoogleRosterListService();
+
 //googleRosterListService.getClanRoster();
 
 client.on('ready', () => {
   client.user.setActivity('revelry to muster the Army!');
 
-  let gent = userLookup.findByUsername('Gent', '4068');
-  let botChannel = channelLookupService.lookupByName<TextChannel>('bot', ChannelType.text);
   //botChannel.send(`<@!${gent.id}> I am up and running... just listening and waiting...`);
 
   console.log('bot up');
@@ -52,14 +49,15 @@ client.on('message', msg => {
 });
 
 client.on('messageReactionAdd', msg => {
+  console.log(msg.emoji);
   if (msg.emoji.name == '🔍' || msg.emoji.name == '🔎'){
     msg.message.react('🔥');
     msg.message.channel.send(`:fire: BURN THE NON-BELIEVERS :fire:`);
   }
 });
 
-client.on('messageReactionAdd', msg => {
-  console.log('react remove detected');  
+client.on('messageReactionAdd', () => {
+  console.log('react remove detected');
 });
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {

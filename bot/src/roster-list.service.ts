@@ -1,4 +1,3 @@
-import { ClanNames } from "./clan-names.enum";
 import { Message } from "discord.js";
 import _ = require("lodash");
 import { ClanRoles } from "./clan-roles.enum";
