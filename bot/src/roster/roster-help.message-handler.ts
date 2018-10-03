@@ -20,22 +20,6 @@ export class RosterHelpMessageHandler extends BaseOfficerMessageHandler {
         return msg.content.trim() === '!roster help' || msg.content.trim() === '!roster';
     }
     handle(msg: Message): void {
-        const generalVoiceChannel = <VoiceChannel>msg.guild.channels
-        .filter(c=> c.name == "General" && c.type == "voice")
-        .map(c => c)[0];
-               
-        const memberNames = generalVoiceChannel.members.map(x => {
-            return `${x.nickname}${x.deaf ? ' 🚫' : ''}`
-        });
-               
-        const officerChannel = this.channelLookupService.lookupByName<TextChannel>("officers", ChannelType.text);
-
-        const today = new Date().toLocaleDateString("en-US");
-        const messageLines = [
-            `Present in voice on ${today}:`,
-            ...memberNames
-        ];
-
-        officerChannel.sendMessage(messageLines.join(`\n`));
+        msg.channel.send(`Commands:\n\`!roster list\`\n\`!roster present\``);
     }
 }
