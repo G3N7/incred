@@ -17,7 +17,7 @@ export class RosterPresentMessageHandler extends BaseOfficerMessageHandler {
     ];
 
     selector(msg: Message): boolean {
-        return msg.content.trim() === '!roster list';
+        return msg.content.trim() === '!roster present';
     }
     handle(msg: Message): void {
         const generalVoiceChannel = <VoiceChannel>msg.guild.channels
