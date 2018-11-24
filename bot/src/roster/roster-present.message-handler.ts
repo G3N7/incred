@@ -21,7 +21,7 @@ export class RosterPresentMessageHandler extends BaseOfficerMessageHandler {
     }
     handle(msg: Message): void {
         const generalVoiceChannel = <VoiceChannel>msg.guild.channels
-        .filter(c=> c.name == "General" && c.type == "voice")
+        .filter(c=> c.name == "Fortress siege" && c.type == "voice")
         .map(c => c)[0];
                
         const memberNames = generalVoiceChannel.members.map(x => {
