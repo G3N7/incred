@@ -9,18 +9,3 @@ before_script:
 
 script:
   - npm run build
-  - npm prune --production
-  - zip -qr bot.zip .
-  
-deploy:
-  provider: elasticbeanstalk
-  access_key_id: $ACCESSKEYID
-  secret_access_key:
-    secure: "$SECRETACCESSKEY"
-  region: "us-west-2"
-  app: "incred-bot"
-  env: "incred-bot-prod"
-  bucket_name: "elasticbeanstalk-us-west-2-810032046333"
-  bucket_path: "incred-bot"
-  skip_cleanup: true
-  zip_file: "bot.zip"
